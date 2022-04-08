@@ -299,8 +299,8 @@ void update_book_db(){
     for(int i=0;i<n;i++){
         fout << book_db.Book_DB[i].Title<<",";
         fout << book_db.Book_DB[i].Author<<",";
-        fout << book_db.Book_DB[i].Publication<<",";
         fout << book_db.Book_DB[i].ISBN<<",";
+        fout << book_db.Book_DB[i].Publication<<",";
         fout << book_db.Book_DB[i].issuedBy<<",";
         fout << book_db.Book_DB[i].isIssued<<",";
         if(i!=n-1) fout << book_db.Book_DB[i].issuedDate<<"\n";
@@ -349,12 +349,9 @@ void update_professor_db(){
 void Book_Database::Display(){
     int n = book_db.Book_DB.size();
     cout<<"Total number of books are "<<n<<endl;
+    cout<<"Sr. \t\tTitle \t\tAuthor \t\tISBN \t\tPublication \n";
     for(int i=0;i<n;i++){
-        cout<<"Book "+to_string(i+1)<<": \n\t";
-        cout<<"Title: "<<book_db.Book_DB[i].Title<<"\n\t";
-        cout<<"Author: "<<book_db.Book_DB[i].Author<<"\n\t";
-        cout<<"ISBN: "<<book_db.Book_DB[i].ISBN<<"\n\t";
-        cout<<"Publication: "<<book_db.Book_DB[i].Publication<<"\n";
+        cout<<i+1<<"\t\t"<<book_db.Book_DB[i].Title<<"\t\t"<<book_db.Book_DB[i].Author<<"\t\t"<<book_db.Book_DB[i].ISBN<<"\t\t"<<book_db.Book_DB[i].Publication<<"\n";
     }
     return ;
 }
@@ -535,52 +532,86 @@ void User_Database::Delete(){
 
 void User_Database::Display(){
     int len;
+    const int numWidth = 18;
     len=user_db.Student_DB.size();
     cout<<"List of All the students are as follows\n";
+    // cout<<"Sr. \t\t Name \t\t ID \n";
+    cout<<left<<setw(numWidth)<<"Sr. No.";
+    cout<<left<<setw(numWidth)<<"Name";
+    cout<<left<<setw(numWidth)<<"ID"<<endl;
     for(int i=0;i<len;i++){
-        cout<<"Student "+to_string(i+1)<<"\n\t";
-        cout<<"Name: "<<user_db.Student_DB[i].name<<"\n\t";
-        cout<<"ID: "<<user_db.Student_DB[i].id<<"\n";
+        cout<<left<<setw(numWidth)<<to_string(i+1);
+        cout<<left<<setw(numWidth)<<user_db.Student_DB[i].name;
+        cout<<left<<setw(numWidth)<<user_db.Student_DB[i].id<<endl;
+        // cout<<to_string(i+1)<<"\t\t"<<user_db.Student_DB[i].name<<"\t\t"<<user_db.Student_DB[i].id<<"\n";
     }
     len=user_db.Profesor_DB.size();
     cout<<"List of All the professor are as follows\n";
+    // cout<<"Sr. \t\t Name \t\t ID \n";
+    cout<<left<<setw(numWidth)<<"Sr. No.";
+    cout<<left<<setw(numWidth)<<"Name";
+    cout<<left<<setw(numWidth)<<"ID"<<endl;
     for(int i=0;i<len;i++){
-        cout<<"Professor "+to_string(i+1)<<"\n\t";
-        cout<<"Name: "<<user_db.Profesor_DB[i].name<<"\n\t";
-        cout<<"ID: "<<user_db.Profesor_DB[i].id<<"\n";
+        cout<<left<<setw(numWidth)<<to_string(i+1);
+        cout<<left<<setw(numWidth)<<user_db.Profesor_DB[i].name;
+        cout<<left<<setw(numWidth)<<user_db.Profesor_DB[i].id<<endl;
+        // cout<<to_string(i+1)<<"\t\t"<<user_db.Profesor_DB[i].name<<"\t\t"<<user_db.Profesor_DB[i].id<<"\n";
     }
     len=user_db.Librarian_DB.size();
     cout<<"List of All the Librarian are as follows\n";
+    // cout<<"Sr. \t\t Name \t\t ID \n";
+    cout<<left<<setw(numWidth)<<"Sr. No.";
+    cout<<left<<setw(numWidth)<<"Name";
+    cout<<left<<setw(numWidth)<<"ID"<<endl;
     for(int i=0;i<len;i++){
-        cout<<"Librarian "+to_string(i+1)<<"\n\t";
-        cout<<"Name: "<<user_db.Profesor_DB[i].name<<"\n\t";
-        cout<<"ID: "<<user_db.Profesor_DB[i].id<<"\n";
+        cout<<left<<setw(numWidth)<<to_string(i+1);
+        cout<<left<<setw(numWidth)<<user_db.Librarian_DB[i].name;
+        cout<<left<<setw(numWidth)<<user_db.Librarian_DB[i].id<<endl;
+        // cout<<to_string(i+1)<<"\t\t"<<user_db.Librarian_DB[i].name<<"\t\t"<<user_db.Librarian_DB[i].id<<"\n";
     }
     return;
 }
 
 void Student::Display_my_Books(){
+    const int numWidth = 18;
     int n = this->List_of_Books.size();
     cout<<"Total number of books you own are "<<n<<endl;
+    if(n==0) return;
+    cout<<left<<setw(numWidth)<<"Sr. No.";
+    cout<<left<<setw(numWidth)<<"Title";
+    cout<<left<<setw(numWidth)<<"Author";
+    cout<<left<<setw(numWidth)<<"ISBN";
+    cout<<left<<setw(numWidth)<<"Publication"<<endl;
+    // cout<<"Sr. \t\tTitle \t\tAuthor \t\tISBN \t\tPublication \n";
     for(int i=0;i<n;i++){
-        cout<<"Book "+to_string(i+1)<<": \n\t";
-        cout<<"Title: "<<this->List_of_Books[i].Title<<"\n\t";
-        cout<<"Author: "<<this->List_of_Books[i].Author<<"\n\t";
-        cout<<"ISBN: "<<this->List_of_Books[i].ISBN<<"\n\t";
-        cout<<"Publication: "<<this->List_of_Books[i].Publication<<"\n";
+        // cout<<i+1<<"\t\t"<<this->List_of_Books[i].Title<<"\t\t"<<this->List_of_Books[i].Author<<"\t\t"<<this->List_of_Books[i].ISBN<<"\t\t"<<this->List_of_Books[i].Publication<<"\n";
+        cout<<left<<setw(numWidth)<<to_string(i+1);
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Title;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Author;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].ISBN;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Publication<<endl;
     }
     return ;
 }
 
 void Profesor::Display_my_Books(){
+    const int numWidth = 18;
     int n = this->List_of_Books.size();
     cout<<"Total number of books you own are "<<n<<endl;
+    if(n==0) return;
+    // cout<<"Sr. \t\tTitle \t\tAuthor \t\tISBN \t\tPublication \n";
+    cout<<left<<setw(numWidth)<<"Sr. No.";
+    cout<<left<<setw(numWidth)<<"Title";
+    cout<<left<<setw(numWidth)<<"Author";
+    cout<<left<<setw(numWidth)<<"ISBN";
+    cout<<left<<setw(numWidth)<<"Publication"<<endl;
     for(int i=0;i<n;i++){
-        cout<<"Book "+to_string(i+1)<<": \n\t";
-        cout<<"Title: "<<this->List_of_Books[i].Title<<"\n\t";
-        cout<<"Author: "<<this->List_of_Books[i].Author<<"\n\t";
-        cout<<"ISBN: "<<this->List_of_Books[i].ISBN<<"\n\t";
-        cout<<"Publication: "<<this->List_of_Books[i].Publication<<"\n";
+        // cout<<i+1<<"\t\t"<<this->List_of_Books[i].Title<<"\t\t"<<this->List_of_Books[i].Author<<"\t\t"<<this->List_of_Books[i].ISBN<<"\t\t"<<this->List_of_Books[i].Publication<<"\n";
+        cout<<left<<setw(numWidth)<<to_string(i+1);
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Title;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Author;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].ISBN;
+        cout<<left<<setw(numWidth)<<this->List_of_Books[i].Publication<<endl;
     }
     return ;
 }
@@ -665,26 +696,36 @@ void Student::Fine_amount(){
 }
 
 void Student::Clear_fine_amount(){
+    cout<<"Fine Amount of Rs. "<<this->fineAmount<<" has been cleared\n";
     this->fineAmount = 0;
     for(int i=0;i<book_db.Book_DB.size();i++){
         if(book_db.Book_DB[i].issuedBy==this->name){
-            book_db.Book_DB[i].issuedBy="";
-            book_db.Book_DB[i].isIssued="no";
-            book_db.Book_DB[i].issuedDate=-1;
+            int issueDate = book_db.Book_DB[i].issuedDate;
+            time_t curr_time = time(NULL);
+            int nofdays = (curr_time - issueDate)/(86400);
+            if(nofdays>30){
+                book_db.Book_DB[i].issuedBy="";
+                book_db.Book_DB[i].isIssued="no";
+                book_db.Book_DB[i].issuedDate=-1;
+            }   
         }
     }
     update_student_db();
     update_book_db();
-    cout<<"Fine Amount of "<<this->fineAmount<<"has been cleared\n";
 }
 
 void Profesor::Clear_fine_amount(){
     this->fineAmount = 0;
     for(int i=0;i<book_db.Book_DB.size();i++){
         if(book_db.Book_DB[i].issuedBy==this->name){
-            book_db.Book_DB[i].issuedBy="";
-            book_db.Book_DB[i].isIssued="no";
-            book_db.Book_DB[i].issuedDate=-1;
+            int issueDate = book_db.Book_DB[i].issuedDate;
+            time_t curr_time = time(NULL);
+            int nofdays = (curr_time - issueDate )/(86400);
+            if(nofdays>60){
+                book_db.Book_DB[i].issuedBy="";
+                book_db.Book_DB[i].isIssued="no";
+                book_db.Book_DB[i].issuedDate=-1;
+            }
         }
     }
     update_book_db();
@@ -752,7 +793,7 @@ void Librarian::check_what_issued(){
                 int nofbooks = temp->List_of_Books.size();
                 cout<<"The user has issued "<<nofbooks<<" book/s\n";
                 for(int i=0;i<nofbooks;i++){
-                    cout<<to_string(i+1)+". Book\t\t"<<"Title: "<<temp->List_of_Books[i].Title<<"\n\t";
+                    cout<<to_string(i+1)+". Book\t\t\t\t"<<"Title: "<<temp->List_of_Books[i].Title<<"\n\t\t";
                 }
                 return ;
             }
@@ -767,7 +808,7 @@ void Librarian::check_what_issued(){
                 int nofbooks = temp->List_of_Books.size();
                 cout<<"The user has issued "<<nofbooks<<" books\n";
                 for(int i=0;i<nofbooks;i++){
-                    cout<<to_string(i+1)+". Book\t\t"<<"Title: "<<temp->List_of_Books[i].Title<<"\n\t";
+                    cout<<to_string(i+1)+". Book\t\t\t\t"<<"Title: "<<temp->List_of_Books[i].Title<<"\n\t\t";
                     return;
                 }
             }
@@ -1009,8 +1050,10 @@ void LoginPage_for_Profesor(){
             cin>>password;
             while( password != user_db.Profesor_DB[i].password ){
                 cout<<"Wrong Password\n";
+                cout<<"Press 0 to go back\n";
                 cout<<"Enter your password again: ";
                 cin>>password; 
+                if(password=="0") LoginPage() ;
             }
             cout<<"Login Succesfull\n";
             HomePage_for_Profesor(&user_db.Profesor_DB[i]);    
@@ -1036,8 +1079,10 @@ void LoginPage_for_Librarian(){
             cin>>password;
             while( password != user_db.Librarian_DB[i].password ){
                 cout<<"Wrong Password\n";
+                cout<<"Press 0 to go back\n";
                 cout<<"Enter your password again: ";
                 cin>>password; 
+                if(password=="0") LoginPage() ;
             }
             cout<<"Login Succesfull\n";
             HomePage_for_Librarian(&user_db.Librarian_DB[i]);    
@@ -1064,8 +1109,10 @@ void LoginPage_for_Student(){
             cin>>password;
             while( password != user_db.Student_DB[i].password ){
                 cout<<"Wrong Password\n";
+                cout<<"Press 0 to go back\n";
                 cout<<"Enter your password again: ";
                 cin>>password; 
+                if(password=="0") LoginPage() ;
             }
             cout<<"Login Succesfull\n";
             HomePage_for_Student(&user_db.Student_DB[i]);    
@@ -1083,6 +1130,5 @@ int main(){
     read_csv_files();
     Initialize_Database();
     LoginPage();
-
     return 0;
 }
